@@ -12,7 +12,7 @@ account_sid = os.environ['TWILIO_ACCOUNT_SID']
 auth_token = os.environ['TWILIO_AUTH_TOKEN']
 
 # Your Twilio phone number
-twilio_number = os.environ['TWILIO_PHONE_NUMBER']
+twilio_number = os.environ['+16673032833']
 
 # Create a Twilio client object
 client = Client(account_sid, auth_token)
@@ -20,11 +20,13 @@ client = Client(account_sid, auth_token)
 def send_sms(recipient_number, message):
     try:
         # Send the SMS
-        message = client.messages.create(
-            from_=twilio_number,
-            to=recipient_number,
-            body=message
-        )
+       message = client.messages.create(
+  from_='+16673032833',
+  body='Happy Birthday',
+  to='+9779804144390'
+)
+        print(message.sid)
+        
         logger.info(f'SMS sent successfully! SID: {message.sid}')
     except TwilioRestException as e:
         logger.error(f'Twilio error: {e}')
